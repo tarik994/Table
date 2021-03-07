@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="app">
+
+    <div ng-controller="mainController">
+
+        <input class="addLang" type="text" placeholder="Add new lang:" ng-model="newLang"><br>
+        <button ng-click="addLang(newLang)">Add new</button>
+        <hr>
+        <input class="search" type="text" ng-model="search" placeholder="Search:">
+        <hr>
+
+        <table class="table">
+            <td>Red.br.</td>
+            <td>Name:</td>
+            <td>Likes:</td>
+            <td>Dislikes:</td>
+            <td>Likes/Dislikes:</td>
+            
+            <tr ng-repeat="lang in languages | filter: search ">
+                <td>{{$index}}</td>
+                <td>{{lang.names}}</td>
+                <td>{{lang.likes}}</td>
+                <td>{{lang.dislikes}}</td>
+                <td><button ng-click="addLike(lang)">Like</button><button ng-click="dislike(lang)">Dislike</button></td>
+            </tr>
+        </table>
+
+
+    </div>
+    
+
+
+    <script src="script.js"></script>
+</body>
+</html>
